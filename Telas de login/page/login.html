@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Tela de Login</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap-grid.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Tela Login/css/login.css">
+    
+    
+  </head>
+
+  <body>
+
+    <div class=" container row" >
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+         
+          <p class="titulo">CONTROLE DE CALORIAS</p>
+          <img class="imagem" src="/Tela Login/imgs/undraw_diet_ghvw.svg">
+        </div>
+    
+
+    
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="container">
+            <div class="card card-container">
+              <form  
+                @submit.prevent
+                class="formulario"
+                id = "login"
+              >
+                <p>E-mail:</p>
+                <input 
+                  type="text" 
+                  class="nome" 
+                  name="nome" 
+                  id="nnome"
+                />
+                <span id="instrucoes"></span>
+                <p>Senha:</p>
+                <input 
+                  type="password" 
+                  class="senha" 
+                  name="senha"
+                  id="ssenha"
+                  
+                />
+                <p>Não possui uma conta? <a href="#">Cadastre-se</a> </p>
+                <button  
+                  type="submit" 
+                  id="btn_submit"
+                >
+                  Entrar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>        
+    </div>
+
+
+
+
+
+
+    
+    
+    
+    <script>
+      window.onload = () => {
+        btn_submit.disabled = true;
+        let validaForm = ()=>{
+         
+          if(nnome.value.length == 0 || ssenha.value.length == 0)
+            btn_submit.disabled = true;
+          else btn_submit.disabled = false;
+
+        };
+
+        nnome.oninput = validaForm;
+        ssenha.oninput = validaForm;
+
+        nnome.onblur = () => {
+          if(nnome.value.length ==0){
+            instrucoes.innerHTML = '*';
+            instrucoes.style.color = '#F00';
+            nnome.style.border = 'thin red solid';
+          }   
+
+          else {
+            instrucoes.innerHTML = ' ';
+            nnome.style.border = 'thin green solid'
+          }
+        };
+
+        ssenha.onblur = () => {
+          if(ssenha.value.length ==0){
+            instrucoes.innerHTML = '*';
+            instrucoes.style.color = '#F00';
+            ssenha.style.border = 'thin red solid';
+          }   
+
+          else {
+            instrucoes.innerHTML = ' ';
+            ssenha.style.border = 'thin green solid'
+          }
+        };  
+      };
+    </script>
+  </body>
+</html>
